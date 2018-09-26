@@ -1,0 +1,65 @@
+{
+    "class": {
+        "namespace": "YeTii\\Test",
+        "type": "class",
+        "name": "TestClass",
+        "implements": [
+            "ImplementedClassOne",
+            "ImplementedClassTwo"
+        ],
+        "extends": "ExtendClass",
+        "uses": [
+            "YeTii\\Another\\ClassOne",
+            {
+                "YeTii\\Another\\One": "ClassTwo"
+            }
+        ],
+        "class_uses": [
+            "ClassOne",
+            "ClassTwo"
+        ],
+        "properties": [
+            {
+                "visibility": "protected",
+                "name": "an_array",
+                "default": "[]"
+            },
+            {
+                "visibility": "public",
+                "name": "public_val",
+                "default": "'def'"
+            }
+        ],
+        "methods": [
+            {
+                "visibility": "protected",
+                "name": "functionName",
+                "args": [
+                    {
+                        "typehint": "int",
+                        "ref": true,
+                        "name": "id"
+                    },
+                    {
+                        "typehint": "string",
+                        "name": "str",
+                        "default": "''"
+                    },
+                    {
+                        "name": "extra",
+                        "default": "null"
+                    }
+                ]
+            },
+            {
+                "visibility": "public",
+                "name": "someName",
+                "args": [
+                    {
+                        "name": "arg"
+                    }
+                ]
+            }
+        ]
+    }
+}

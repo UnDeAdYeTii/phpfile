@@ -1,0 +1,20 @@
+{
+    "name": "yetii/phpfile",
+    "description": "Creates Basic PHP Files based on a schematic",
+    "type": "library",
+    "license": "MIT",
+    "version": "v0.1.0",
+    "authors": [
+        {
+            "name": "UnDeAd-YeTii",
+            "email": "bradietilley97@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "YeTii\\PhpFile\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
