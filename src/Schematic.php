@@ -9,7 +9,7 @@ class Schematic {
     public $data = [];
 
     public function read($json) {
-        if (\file_exists($json)) {
+        if (is_string($json) && \file_exists($json)) {
             $json = \file_get_contents($json);
         }
         if (is_string($json)) {
@@ -25,8 +25,9 @@ class Schematic {
     public function fill($json) {
         $base = $this->schemaBase();
 
+        $json = (array)$json;
         $orig = $json;
-        $json = $json->class;
+        $json = $json['class'];
 
         foreach ($json as $k => $v) {
             if ($k == 'methods') {
@@ -152,17 +153,17 @@ class Schematic {
             ->indent(0)
             ->lineIf('namespace '.$this->get('namespace').';', $this->get('namespace'))
             ->break()
-            ->foreachIf(array_merge($uses, ['']), count($uses))
+            ->foreachIf(array_merge($uses, ['']), $uses)
             ->string("$type $name", 1)
             ->indent(1)
                 ->lineIf("extends $extends", $extends)
                 ->lineIf("implements $implements", $implements)
             ->indent(0)
             ->line('{')
-            ->break()
-            ->indent(1)
-                ->foreachIf(array_merge($class_uses, ['']), count($class_uses))
-                ->foreachIf(array_merge($properties, ['']), count($properties));
+                ->indent(1)
+                ->break()
+                ->foreachIf(array_merge($class_uses, ['']), $class_uses)
+                ->foreachIf(array_merge($properties, ['']), $properties);
 
         foreach ($this->get('methods', []) as $method) {
             $v = $method['visibility'];
@@ -181,11 +182,12 @@ class Schematic {
             $args = implode(', ', $args);
 
             $code = $method['code'] ?? '// code';
+
             $str = "$v function $n($args)";
             $file->line($str)
                 ->line('{')
                 ->indent(2)
-                    ->lineIf($code, $code)
+                    ->lineIf(preg_replace('/\n/', "\n".$file->pad(), $code), $code)
                 ->indent(1)
                 ->line('}', '');
         }
@@ -194,7 +196,7 @@ class Schematic {
             ->indent(0)
             ->line('}');
 
-        $file->write();
+        return $file->write();
     }
 
     public function get($key, $def = null) {

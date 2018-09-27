@@ -44,7 +44,7 @@ class File {
     }
 
     public function stringIf($arg, $if, $submit = false) {
-        if ($if !== null && $if !== []) {
+        if ($if !== null && $if !== [] && $if !== '') {
             $this->string($arg);
         }
         if ($submit) {
@@ -59,14 +59,14 @@ class File {
     }
 
     public function lineIf($arg, $if) {
-        if ($if !== null && $if !== []) {
+        if ($if !== null && $if !== [] && $if !== '') {
             $this->line($arg);
         }
         return $this;
     }
 
     public function foreachIf($arg, $if) {
-        if ($if !== null && $if !== []) {
+        if ($if !== null && $if !== [] && $if !== '') {
             foreach ($arg as $a) {
                 $this->line($a);
             }
@@ -89,7 +89,9 @@ class File {
     }
 
     public function write() {
-        file_put_contents($this->file, $this->compile());
+        $this->compiled = $this->compile();
+        file_put_contents($this->file, $this->compiled);
+        return $this;
     }
 
 }
