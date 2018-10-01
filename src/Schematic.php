@@ -1,13 +1,17 @@
 <?php
-
 namespace YeTii\PhpFile;
-
-use YeTii\PhpFile\File;
-
+/**
+ * Class Schematic
+ */
 class Schematic {
-
+    /**
+     * @var array
+     */
     public $data = [];
-
+    /**
+     * @param string $json
+     * @return $this
+     */
     public function read($json) {
         if (is_string($json) && \file_exists($json)) {
             $json = \file_get_contents($json);
@@ -21,14 +25,15 @@ class Schematic {
         $this->fill($json);
         return $this;
     }
-
+    /**
+     * @param array $json
+     * @return $this
+     */
     public function fill($json) {
         $base = $this->schemaBase();
-
         $json = (array)$json;
         $orig = $json;
         $json = $json['class'];
-
         foreach ($json as $k => $v) {
             if ($k == 'methods') {
                 $methods = [];
@@ -59,7 +64,9 @@ class Schematic {
         $this->data = $base;
         return $this;
     }
-
+    /**
+     * @return array
+     */
     public function schemaBase() {
         return [
             "namespace" => null,
@@ -73,7 +80,9 @@ class Schematic {
             "methods" => []
         ];
     }
-
+    /**
+     * @return array
+     */
     public function schemaMethod() {
         return [
             "visibility" => null,
@@ -82,7 +91,9 @@ class Schematic {
             "args" => []
         ];
     }
-
+    /**
+     * @return array
+     */
     public function schemaProperty() {
         return [
             "visibility" => null,
@@ -90,7 +101,9 @@ class Schematic {
             "default" => null,
         ];
     }
-
+    /**
+     * @return array
+     */
     public function schemaArgument() {
         return [
             "typehint" => null,
@@ -99,10 +112,12 @@ class Schematic {
             "ref" => null,
         ];
     }
- 
+    /**
+     * @param string $to
+     * @return \YeTii\PhpFile\File
+     */
     public function out($to) {
         $file = new File($to);
-
         $uses = [];
         foreach ($this->get('uses', []) as $use) {
             if (is_string($use)) {
@@ -111,10 +126,8 @@ class Schematic {
                 $b = array_keys((array)$use);
                 $b = array_reverse($b);
                 $b = array_pop($b);
-
                 $a = array_values((array)$use);
                 $a = array_pop($a);
-
                 $u = 'use '.$b.' as '.$a.';';
                 $uses[] = $u;
             }
@@ -131,15 +144,12 @@ class Schematic {
                 $b = array_keys((array)$use);
                 $b = array_reverse($b);
                 $b = array_pop($b);
-
                 $a = array_values((array)$use);
                 $a = array_pop($a);
-
                 $u = 'use '.$b.' as '.$a.';';
                 $class_uses[] = $u;
             }
         }
-
         $properties = [];
         foreach ($this->get('properties', []) as $prop) {
             $v = $prop['visibility'] ?? 'public';
@@ -148,7 +158,6 @@ class Schematic {
             $str = $v.' $'.$n.(is_callable($def)?'':' = '.$def).';';
             $properties[] = $str;
         }
-
         $file->line('<?php', '')
             ->indent(0)
             ->lineIf('namespace '.$this->get('namespace').';', $this->get('namespace'))
@@ -164,12 +173,10 @@ class Schematic {
                 ->break()
                 ->foreachIf(array_merge($class_uses, ['']), $class_uses)
                 ->foreachIf(array_merge($properties, ['']), $properties);
-
         foreach ($this->get('methods', []) as $method) {
             $v = $method['visibility'];
             $n = $method['name'];
             $methods = $method['args'] ?? [];
-
             $args = [];
             foreach ($methods as $arg) {
                 $at = $arg['typehint'] ? $arg['typehint'].' ' : '';
@@ -180,9 +187,7 @@ class Schematic {
                 $args[] = $str;
             }
             $args = implode(', ', $args);
-
             $code = $method['code'] ?? '// code';
-
             $str = "$v function $n($args)";
             $file->line($str)
                 ->line('{')
@@ -191,14 +196,16 @@ class Schematic {
                 ->indent(1)
                 ->line('}', '');
         }
-
         $file
             ->indent(0)
             ->line('}');
-
         return $file->write();
     }
-
+    /**
+     * @param string $key
+     * @param mixed|null $def
+     * @return array|mixed|null
+     */
     public function get($key, $def = null) {
         $data = $this->data;
         foreach (explode('.', $key) as $k) {
@@ -209,5 +216,4 @@ class Schematic {
         }
         return $data;
     }
-
 }
