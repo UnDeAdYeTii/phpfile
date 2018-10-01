@@ -3,7 +3,6 @@
     "description": "Creates Basic PHP Files based on a schematic",
     "type": "library",
     "license": "MIT",
-    "version": "v0.2.0",
     "authors": [
         {
             "name": "UnDeAd-YeTii",
