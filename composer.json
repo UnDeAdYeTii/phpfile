@@ -11,9 +11,11 @@
     ],
     "autoload": {
         "psr-4": {
-            "YeTii\\PhpFile\\": "src/"
+            "YeTii\\PhpFile\\": "src"
         }
     },
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+      "ext-json": "*"
+    }
 }
