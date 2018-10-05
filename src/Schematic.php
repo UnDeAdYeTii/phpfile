@@ -1,18 +1,23 @@
 <?php
+
 namespace YeTii\PhpFile;
+
 /**
  * Class Schematic
  */
-class Schematic {
+class Schematic
+{
     /**
      * @var array
      */
     public $data = [];
+
     /**
      * @param string $json
      * @return $this
      */
-    public function read($json) {
+    public function read($json)
+    {
         if (is_string($json) && \file_exists($json)) {
             $json = \file_get_contents($json);
         }
@@ -25,11 +30,13 @@ class Schematic {
         $this->fill($json);
         return $this;
     }
+
     /**
      * @param array $json
      * @return $this
      */
-    public function fill($json) {
+    public function fill($json)
+    {
         $base = $this->schemaBase();
         $json = (array)$json;
         $orig = $json;
@@ -64,59 +71,69 @@ class Schematic {
         $this->data = $base;
         return $this;
     }
+
     /**
      * @return array
      */
-    public function schemaBase() {
+    public function schemaBase()
+    {
         return [
-            "namespace" => null,
-            "type" => null,
-            "name" => null,
-            "uses" => [],
+            "namespace"  => null,
+            "type"       => null,
+            "name"       => null,
+            "uses"       => [],
             "implements" => [],
-            "extends" => null,
+            "extends"    => null,
             "class_uses" => [],
             "properties" => [],
-            "methods" => []
+            "methods"    => [],
         ];
     }
+
     /**
      * @return array
      */
-    public function schemaMethod() {
+    public function schemaMethod()
+    {
         return [
             "visibility" => null,
-            "name" => null,
-            "code" => null,
-            "args" => []
+            "name"       => null,
+            "code"       => null,
+            "args"       => [],
         ];
     }
+
     /**
      * @return array
      */
-    public function schemaProperty() {
+    public function schemaProperty()
+    {
         return [
             "visibility" => null,
-            "name" => null,
-            "default" => null,
+            "name"       => null,
+            "default"    => null,
         ];
     }
+
     /**
      * @return array
      */
-    public function schemaArgument() {
+    public function schemaArgument()
+    {
         return [
             "typehint" => null,
-            "name" => null,
-            "default" => null,
-            "ref" => null,
+            "name"     => null,
+            "default"  => null,
+            "ref"      => null,
         ];
     }
+
     /**
      * @param string $to
      * @return \YeTii\PhpFile\File
      */
-    public function out($to) {
+    public function out($to)
+    {
         $file = new File($to);
         $uses = [];
         foreach ($this->get('uses', []) as $use) {
@@ -154,8 +171,10 @@ class Schematic {
         foreach ($this->get('properties', []) as $prop) {
             $v = $prop['visibility'] ?? 'public';
             $n = $prop['name'];
-            $def = $prop['default'] ?? function() {};
-            $str = $v.' $'.$n.(is_callable($def)?'':' = '.$def).';';
+            $def = $prop['default'] ??
+                function () {
+                };
+            $str = $v.' $'.$n.(is_callable($def) ? '' : ' = '.$def).';';
             $properties[] = $str;
         }
         $file->line('<?php', '')
@@ -165,14 +184,14 @@ class Schematic {
             ->foreachIf(array_merge($uses, ['']), $uses)
             ->string("$type $name", 1)
             ->indent(1)
-                ->lineIf("extends $extends", $extends)
-                ->lineIf("implements $implements", $implements)
+            ->lineIf("extends $extends", $extends)
+            ->lineIf("implements $implements", $implements)
             ->indent(0)
             ->line('{')
-                ->indent(1)
-                ->break()
-                ->foreachIf(array_merge($class_uses, ['']), $class_uses)
-                ->foreachIf(array_merge($properties, ['']), $properties);
+            ->indent(1)
+            ->break()
+            ->foreachIf(array_merge($class_uses, ['']), $class_uses)
+            ->foreachIf(array_merge($properties, ['']), $properties);
         foreach ($this->get('methods', []) as $method) {
             $v = $method['visibility'];
             $n = $method['name'];
@@ -192,7 +211,7 @@ class Schematic {
             $file->line($str)
                 ->line('{')
                 ->indent(2)
-                    ->lineIf(preg_replace('/\n/', "\n".$file->pad(), $code), $code)
+                ->lineIf(preg_replace('/\n/', "\n".$file->pad(), $code), $code)
                 ->indent(1)
                 ->line('}', '');
         }
@@ -201,12 +220,14 @@ class Schematic {
             ->line('}');
         return $file->write();
     }
+
     /**
-     * @param string $key
+     * @param string     $key
      * @param mixed|null $def
      * @return array|mixed|null
      */
-    public function get($key, $def = null) {
+    public function get($key, $def = null)
+    {
         $data = $this->data;
         foreach (explode('.', $key) as $k) {
             if (!is_array($data) || !isset($data[$k])) {
