@@ -65,6 +65,12 @@ class Schematic
                     $properties[] = \array_merge($this->schemaProperty(), (array)$props);
                 }
                 $v = $properties;
+            } elseif ($k == 'constants') {
+                $constants = [];
+                foreach ($v as $const) {
+                    $constants[] = \array_merge($this->schemaConstant(), (array)$const);
+                }
+                $v = $constants;
             }
             $base[$k] = $v;
         }
@@ -107,6 +113,18 @@ class Schematic
      * @return array
      */
     public function schemaProperty()
+    {
+        return [
+            "visibility" => null,
+            "name"       => null,
+            "default"    => null,
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function schemaConstant()
     {
         return [
             "visibility" => null,
@@ -167,6 +185,7 @@ class Schematic
                 $class_uses[] = $u;
             }
         }
+
         $properties = [];
         foreach ($this->get('properties', []) as $prop) {
             $v = $prop['visibility'] ?? 'public';
@@ -177,6 +196,16 @@ class Schematic
             $str = $v.' $'.$n.(is_callable($def) ? '' : ' = '.$def).';';
             $properties[] = $str;
         }
+
+        $constants = [];
+        foreach ($this->get('constants', []) as $const) {
+            $v = $const['visibility'] ?? 'public';
+            $n = $const['name'];
+            $def = $const['default'];
+            $str = $v . ' const ' . $n . ' = ' . $def . ";\n";
+            $constants[] = $str;
+        }
+        
         $file->line('<?php', '')
             ->indent(0)
             ->lineIf('namespace '.$this->get('namespace').';', $this->get('namespace'))
@@ -191,6 +220,7 @@ class Schematic
             ->indent(1)
             ->break()
             ->foreachIf(array_merge($class_uses, ['']), $class_uses)
+            ->foreachIf(array_merge($constants, ['']), $constants)
             ->foreachIf(array_merge($properties, ['']), $properties);
         foreach ($this->get('methods', []) as $method) {
             $v = $method['visibility'];
