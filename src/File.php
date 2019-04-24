@@ -2,49 +2,27 @@
 
 namespace YeTii\PhpFile;
 
-/**
- * Class File
- */
 class File
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $compiled;
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $file;
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $lines = [];
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $line = '';
-    /**
-     * @var int
-     */
+    /** @var int */
     protected $indent = 0;
-    /**
-     * @var int
-     */
+    /** @var int */
     protected $spaces = 4;
 
-    /**
-     * File constructor.
-     * @param $file
-     */
-    public function __construct($file)
+    public function __construct(string $file)
     {
         $this->file = $file;
     }
 
-    /**
-     * @return $this
-     */
-    public function line()
+    public function line(): self
     {
         foreach (func_get_args() as $arg) {
             if ($this->line !== '') {
@@ -56,21 +34,13 @@ class File
         return $this;
     }
 
-    /**
-     * @return $this
-     */
-    public function break()
+    public function break(): self
     {
         $this->lines[] = '';
         return $this;
     }
 
-    /**
-     * @param string $arg
-     * @param bool   $submit
-     * @return $this
-     */
-    public function string($arg, $submit = false)
+    public function string(string $arg, bool $submit = false): self
     {
         $this->line .= $arg;
         if ($submit) {
@@ -86,7 +56,7 @@ class File
      * @param bool         $submit
      * @return $this
      */
-    public function stringIf($arg, $if, $submit = false)
+    public function stringIf(string $arg, $if, bool $submit = false): self
     {
         if ($if !== null && $if !== [] && $if !== '') {
             $this->string($arg);
@@ -98,10 +68,7 @@ class File
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function compile()
+    public function compile(): string
     {
         return implode("\n", $this->lines);
     }
@@ -111,7 +78,7 @@ class File
      * @param mixed|string $if
      * @return $this
      */
-    public function lineIf($arg, $if)
+    public function lineIf(string $arg, $if): self
     {
         if ($if !== null && $if !== [] && $if !== '') {
             $this->line($arg);
@@ -124,7 +91,7 @@ class File
      * @param mixed|string       $if
      * @return $this
      */
-    public function foreachIf($arg, $if)
+    public function foreachIf($arg, $if): self
     {
         if ($if !== null && $if !== [] && $if !== '') {
             foreach ($arg as $a) {
@@ -134,38 +101,24 @@ class File
         return $this;
     }
 
-    /**
-     * @param int $indent
-     * @return $this
-     */
-    public function indent(int $indent)
+    public function indent(int $indent): self
     {
         $this->indent = abs($indent);
         return $this;
     }
 
-    /**
-     * @param int $spaces
-     * @return $this
-     */
-    public function spaces(int $spaces)
+    public function spaces(int $spaces): self
     {
         $this->spaces = abs($spaces);
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function pad()
+    public function pad(): string
     {
         return str_pad('', $this->indent * $this->spaces, ' ', STR_PAD_LEFT);
     }
 
-    /**
-     * @return $this
-     */
-    public function write()
+    public function write(): self
     {
         $this->compiled = $this->compile();
         file_put_contents($this->file, $this->compiled);
