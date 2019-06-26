@@ -2,7 +2,7 @@
 
 namespace YeTii\PhpFile;
 
-class File
+final class File
 {
     /** @var string */
     protected $compiled;

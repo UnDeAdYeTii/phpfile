@@ -2,7 +2,7 @@
 
 namespace YeTii\PhpFile;
 
-class Schematic
+final class Schematic
 {
     /** @var array */
     public $data = [];
@@ -17,7 +17,7 @@ class Schematic
             $json = \file_get_contents($json);
         }
         if (is_string($json)) {
-            $json = \json_decode($json);
+            $json = \json_decode($json, false);
         }
         if (!$json) {
             return $this;
@@ -200,7 +200,7 @@ class Schematic
             $str = $v . ' const ' . $n . ' = ' . $def . ";\n";
             $constants[] = $str;
         }
-        
+
         $file->line('<?php', '')
             ->indent(0)
             ->lineIf('namespace '.$this->get('namespace').';', $this->get('namespace'))
