@@ -3,7 +3,7 @@
 namespace YeTii\PhpFile;
 
 /**
- * Class File
+ * Class File.
  */
 class File
 {
@@ -53,6 +53,7 @@ class File
             }
             $this->lines[] = $this->pad().$arg;
         }
+
         return $this;
     }
 
@@ -62,6 +63,7 @@ class File
     public function break()
     {
         $this->lines[] = '';
+
         return $this;
     }
 
@@ -77,6 +79,7 @@ class File
             $this->lines[] = $this->pad().$this->line;
             $this->line = '';
         }
+
         return $this;
     }
 
@@ -95,6 +98,7 @@ class File
             $this->lines[] = $this->pad().$this->line;
             $this->line = '';
         }
+
         return $this;
     }
 
@@ -116,6 +120,7 @@ class File
         if ($if !== null && $if !== [] && $if !== '') {
             $this->line($arg);
         }
+
         return $this;
     }
 
@@ -131,6 +136,7 @@ class File
                 $this->line($a);
             }
         }
+
         return $this;
     }
 
@@ -141,6 +147,7 @@ class File
     public function indent(int $indent)
     {
         $this->indent = abs($indent);
+
         return $this;
     }
 
@@ -151,6 +158,7 @@ class File
     public function spaces(int $spaces)
     {
         $this->spaces = abs($spaces);
+
         return $this;
     }
 
@@ -169,6 +177,7 @@ class File
     {
         $this->compiled = $this->compile();
         file_put_contents($this->file, $this->compiled);
+
         return $this;
     }
 }
