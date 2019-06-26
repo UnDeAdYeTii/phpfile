@@ -5,32 +5,32 @@ namespace YeTii\PhpFile;
 /**
  * Class File
  */
-class File
+final class File
 {
     /**
      * @var string
      */
-    protected $compiled;
+    private $compiled;
     /**
      * @var string
      */
-    protected $file;
+    private $file;
     /**
      * @var array
      */
-    protected $lines = [];
+    private $lines = [];
     /**
      * @var string
      */
-    protected $line = '';
+    private $line = '';
     /**
      * @var int
      */
-    protected $indent = 0;
+    private $indent = 0;
     /**
      * @var int
      */
-    protected $spaces = 4;
+    private $spaces = 4;
 
     /**
      * File constructor.

@@ -5,7 +5,7 @@ namespace YeTii\PhpFile;
 /**
  * Class Schematic
  */
-class Schematic
+final class Schematic
 {
     /**
      * @var array
