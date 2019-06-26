@@ -2,21 +2,16 @@
 
 namespace YeTii\PhpFile;
 
-/**
- * Class Schematic
- */
 class Schematic
 {
-    /**
-     * @var array
-     */
+    /** @var array */
     public $data = [];
 
     /**
      * @param string $json
      * @return $this
      */
-    public function read($json)
+    public function read(string $json): self
     {
         if (is_string($json) && \file_exists($json)) {
             $json = \file_get_contents($json);
@@ -35,7 +30,7 @@ class Schematic
      * @param array $json
      * @return $this
      */
-    public function fill($json)
+    public function fill(array $json): self
     {
         $base = $this->schemaBase();
         $json = (array)$json;
@@ -81,7 +76,7 @@ class Schematic
     /**
      * @return array
      */
-    public function schemaBase()
+    public function schemaBase(): array
     {
         return [
             "namespace"  => null,
@@ -99,7 +94,7 @@ class Schematic
     /**
      * @return array
      */
-    public function schemaMethod()
+    public function schemaMethod(): array
     {
         return [
             "visibility" => null,
@@ -112,7 +107,7 @@ class Schematic
     /**
      * @return array
      */
-    public function schemaProperty()
+    public function schemaProperty(): array
     {
         return [
             "visibility" => null,
@@ -136,7 +131,7 @@ class Schematic
     /**
      * @return array
      */
-    public function schemaArgument()
+    public function schemaArgument(): array
     {
         return [
             "typehint" => null,
@@ -148,9 +143,9 @@ class Schematic
 
     /**
      * @param string $to
-     * @return \YeTii\PhpFile\File
+     * @return File
      */
-    public function out($to)
+    public function out(string $to): File
     {
         $file = new File($to);
         $uses = [];
@@ -253,10 +248,10 @@ class Schematic
 
     /**
      * @param string     $key
-     * @param mixed|null $def
+     * @param mixed|null $default
      * @return array|mixed|null
      */
-    public function get($key, $def = null)
+    public function get(string $key, $default = null)
     {
         $data = $this->data;
         foreach (explode('.', $key) as $k) {
