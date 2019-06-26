@@ -12,9 +12,17 @@
     "require": {
         "ext-json": "*"
     },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0"
+    },
     "autoload": {
         "psr-4": {
             "YeTii\\PhpFile\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "YeTii\\PhpFile\\Tests": "tests"
         }
     }
 }
