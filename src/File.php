@@ -31,12 +31,14 @@ final class File
             }
             $this->lines[] = $this->pad().$arg;
         }
+
         return $this;
     }
 
     public function break(): self
     {
         $this->lines[] = '';
+
         return $this;
     }
 
@@ -47,6 +49,7 @@ final class File
             $this->lines[] = $this->pad().$this->line;
             $this->line = '';
         }
+
         return $this;
     }
 
@@ -65,6 +68,7 @@ final class File
             $this->lines[] = $this->pad().$this->line;
             $this->line = '';
         }
+
         return $this;
     }
 
@@ -83,6 +87,7 @@ final class File
         if ($if !== null && $if !== [] && $if !== '') {
             $this->line($arg);
         }
+
         return $this;
     }
 
@@ -98,18 +103,21 @@ final class File
                 $this->line($a);
             }
         }
+
         return $this;
     }
 
     public function indent(int $indent): self
     {
         $this->indent = abs($indent);
+
         return $this;
     }
 
     public function spaces(int $spaces): self
     {
         $this->spaces = abs($spaces);
+
         return $this;
     }
 
@@ -122,6 +130,7 @@ final class File
     {
         $this->compiled = $this->compile();
         file_put_contents($this->file, $this->compiled);
+
         return $this;
     }
 }

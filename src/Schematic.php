@@ -19,10 +19,11 @@ final class Schematic
         if (is_string($json)) {
             $json = \json_decode($json, false);
         }
-        if (!$json) {
+        if (! $json) {
             return $this;
         }
         $this->fill($json);
+
         return $this;
     }
 
@@ -33,7 +34,7 @@ final class Schematic
     public function fill(array $json): self
     {
         $base = $this->schemaBase();
-        $json = (array)$json;
+        $json = (array) $json;
         $orig = $json;
         $json = $json['class'];
         foreach ($json as $k => $v) {
@@ -45,7 +46,7 @@ final class Schematic
                         if ($k2 == 'args') {
                             $args = [];
                             foreach ($v2 as $arg) {
-                                $args[] = \array_merge($this->schemaArgument(), (array)$arg);
+                                $args[] = \array_merge($this->schemaArgument(), (array) $arg);
                             }
                             $v2 = $args;
                         }
@@ -57,19 +58,20 @@ final class Schematic
             } elseif ($k == 'properties') {
                 $properties = [];
                 foreach ($v as $props) {
-                    $properties[] = \array_merge($this->schemaProperty(), (array)$props);
+                    $properties[] = \array_merge($this->schemaProperty(), (array) $props);
                 }
                 $v = $properties;
             } elseif ($k == 'constants') {
                 $constants = [];
                 foreach ($v as $const) {
-                    $constants[] = \array_merge($this->schemaConstant(), (array)$const);
+                    $constants[] = \array_merge($this->schemaConstant(), (array) $const);
                 }
                 $v = $constants;
             }
             $base[$k] = $v;
         }
         $this->data = $base;
+
         return $this;
     }
 
@@ -79,15 +81,15 @@ final class Schematic
     public function schemaBase(): array
     {
         return [
-            "namespace"  => null,
-            "type"       => null,
-            "name"       => null,
-            "uses"       => [],
-            "implements" => [],
-            "extends"    => null,
-            "class_uses" => [],
-            "properties" => [],
-            "methods"    => [],
+            'namespace'  => null,
+            'type'       => null,
+            'name'       => null,
+            'uses'       => [],
+            'implements' => [],
+            'extends'    => null,
+            'class_uses' => [],
+            'properties' => [],
+            'methods'    => [],
         ];
     }
 
@@ -97,10 +99,10 @@ final class Schematic
     public function schemaMethod(): array
     {
         return [
-            "visibility" => null,
-            "name"       => null,
-            "code"       => null,
-            "args"       => [],
+            'visibility' => null,
+            'name'       => null,
+            'code'       => null,
+            'args'       => [],
         ];
     }
 
@@ -110,9 +112,9 @@ final class Schematic
     public function schemaProperty(): array
     {
         return [
-            "visibility" => null,
-            "name"       => null,
-            "default"    => null,
+            'visibility' => null,
+            'name'       => null,
+            'default'    => null,
         ];
     }
 
@@ -122,9 +124,9 @@ final class Schematic
     public function schemaConstant()
     {
         return [
-            "visibility" => null,
-            "name"       => null,
-            "default"    => null,
+            'visibility' => null,
+            'name'       => null,
+            'default'    => null,
         ];
     }
 
@@ -134,10 +136,10 @@ final class Schematic
     public function schemaArgument(): array
     {
         return [
-            "typehint" => null,
-            "name"     => null,
-            "default"  => null,
-            "ref"      => null,
+            'typehint' => null,
+            'name'     => null,
+            'default'  => null,
+            'ref'      => null,
         ];
     }
 
@@ -153,10 +155,10 @@ final class Schematic
             if (is_string($use)) {
                 $uses[] = 'use '.$use.';';
             } else {
-                $b = array_keys((array)$use);
+                $b = array_keys((array) $use);
                 $b = array_reverse($b);
                 $b = array_pop($b);
-                $a = array_values((array)$use);
+                $a = array_values((array) $use);
                 $a = array_pop($a);
                 $u = 'use '.$b.' as '.$a.';';
                 $uses[] = $u;
@@ -171,10 +173,10 @@ final class Schematic
             if (is_string($use)) {
                 $class_uses[] = 'use '.$use.';';
             } else {
-                $b = array_keys((array)$use);
+                $b = array_keys((array) $use);
                 $b = array_reverse($b);
                 $b = array_pop($b);
-                $a = array_values((array)$use);
+                $a = array_values((array) $use);
                 $a = array_pop($a);
                 $u = 'use '.$b.' as '.$a.';';
                 $class_uses[] = $u;
@@ -197,7 +199,7 @@ final class Schematic
             $v = $const['visibility'] ?? 'public';
             $n = $const['name'];
             $def = $const['default'];
-            $str = $v . ' const ' . $n . ' = ' . $def . ";\n";
+            $str = $v.' const '.$n.' = '.$def.";\n";
             $constants[] = $str;
         }
 
@@ -243,6 +245,7 @@ final class Schematic
         $file
             ->indent(0)
             ->line('}');
+
         return $file->write();
     }
 
@@ -255,11 +258,12 @@ final class Schematic
     {
         $data = $this->data;
         foreach (explode('.', $key) as $k) {
-            if (!is_array($data) || !isset($data[$k])) {
-                return $def;
+            if (! is_array($data) || ! isset($data[$k])) {
+                return $default;
             }
             $data = &$data[$k];
         }
+
         return $data;
     }
 }
