@@ -54,9 +54,9 @@ final class File
     }
 
     /**
-     * @param string       $arg
-     * @param mixed|string $if
-     * @param bool         $submit
+     * @param  string  $arg
+     * @param  mixed|string  $if
+     * @param  bool  $submit
      * @return $this
      */
     public function stringIf(string $arg, $if, bool $submit = false): self
@@ -78,8 +78,8 @@ final class File
     }
 
     /**
-     * @param string       $arg
-     * @param mixed|string $if
+     * @param  string  $arg
+     * @param  mixed|string  $if
      * @return $this
      */
     public function lineIf(string $arg, $if): self
@@ -92,8 +92,8 @@ final class File
     }
 
     /**
-     * @param array|string|mixed $arg
-     * @param mixed|string       $if
+     * @param  array|string|mixed  $arg
+     * @param  mixed|string  $if
      * @return $this
      */
     public function foreachIf($arg, $if): self

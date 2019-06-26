@@ -8,7 +8,7 @@ final class Schematic
     public $data = [];
 
     /**
-     * @param string $json
+     * @param  string  $json
      * @return $this
      */
     public function read(string $json): self
@@ -28,7 +28,7 @@ final class Schematic
     }
 
     /**
-     * @param array $json
+     * @param  array  $json
      * @return $this
      */
     public function fill(array $json): self
@@ -81,15 +81,15 @@ final class Schematic
     public function schemaBase(): array
     {
         return [
-            'namespace'  => null,
-            'type'       => null,
-            'name'       => null,
-            'uses'       => [],
+            'namespace' => null,
+            'type' => null,
+            'name' => null,
+            'uses' => [],
             'implements' => [],
-            'extends'    => null,
+            'extends' => null,
             'class_uses' => [],
             'properties' => [],
-            'methods'    => [],
+            'methods' => [],
         ];
     }
 
@@ -100,9 +100,9 @@ final class Schematic
     {
         return [
             'visibility' => null,
-            'name'       => null,
-            'code'       => null,
-            'args'       => [],
+            'name' => null,
+            'code' => null,
+            'args' => [],
         ];
     }
 
@@ -113,20 +113,20 @@ final class Schematic
     {
         return [
             'visibility' => null,
-            'name'       => null,
-            'default'    => null,
+            'name' => null,
+            'default' => null,
         ];
     }
 
     /**
      * @return array
      */
-    public function schemaConstant()
+    public function schemaConstant(): array
     {
         return [
             'visibility' => null,
-            'name'       => null,
-            'default'    => null,
+            'name' => null,
+            'default' => null,
         ];
     }
 
@@ -137,14 +137,14 @@ final class Schematic
     {
         return [
             'typehint' => null,
-            'name'     => null,
-            'default'  => null,
-            'ref'      => null,
+            'name' => null,
+            'default' => null,
+            'ref' => null,
         ];
     }
 
     /**
-     * @param string $to
+     * @param  string  $to
      * @return File
      */
     public function out(string $to): File
@@ -250,8 +250,8 @@ final class Schematic
     }
 
     /**
-     * @param string     $key
-     * @param mixed|null $default
+     * @param  string  $key
+     * @param  mixed|null  $default
      * @return array|mixed|null
      */
     public function get(string $key, $default = null)
