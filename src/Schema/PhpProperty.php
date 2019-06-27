@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace YeTii\PhpFile\Schema;
 
 use YeTii\PhpFile\Entity\Visibility;

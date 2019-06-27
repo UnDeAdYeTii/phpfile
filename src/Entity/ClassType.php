@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace YeTii\PhpFile\Entity;
 
 final class ClassType
