@@ -15,9 +15,15 @@ final class PhpMethod
     private $name;
     /** @var string|null */
     private $code;
-    /** @var array|array<PhpArgument>|null */
+    /** @var array<PhpArgument>|null */
     private $arguments;
 
+    /**
+     * @param  string  $name
+     * @param  Visibility  $visibility
+     * @param  string|null  $code
+     * @param  array<PhpArgument>|null  $arguments
+     */
     public function __construct(string $name, Visibility $visibility, ?string $code, ?array $arguments)
     {
         $this->name = $name;

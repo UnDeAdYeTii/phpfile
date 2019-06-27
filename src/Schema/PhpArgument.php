@@ -9,7 +9,7 @@ use YeTii\PhpFile\Entity\TypeHint;
 /** @internal */
 final class PhpArgument
 {
-    /** @var mixed */
+    /** @var string|null */
     private $default;
     /** @var string */
     private $name;

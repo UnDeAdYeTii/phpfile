@@ -22,6 +22,7 @@ final class Schematic
     /** @var PhpClass */
     private $data;
 
+    /** @param  array<mixed>  $schema */
     public function __construct(array $schema)
     {
         $classData = $schema['class'];
@@ -72,6 +73,11 @@ final class Schematic
         return $this->data;
     }
 
+    /**
+     * @param  array<array<array|bool|string|null>>  $value
+     *
+     * @return array<PhpConstant>
+     */
     private function mapConstants(array $value): array
     {
         return array_map(static function (array $constant) {
@@ -83,6 +89,11 @@ final class Schematic
         }, $value);
     }
 
+    /**
+     * @param  array<array<array|bool|string|null>>  $value
+     *
+     * @return array<PhpProperty>
+     */
     private function mapProperties(array $value): array
     {
         return array_map(static function (array $property) {
@@ -94,6 +105,11 @@ final class Schematic
         }, $value);
     }
 
+    /**
+     * @param  array<array<array|bool|string|null>>  $value
+     *
+     * @return array<PhpMethod>
+     */
     private function mapMethods(array $value): array
     {
         return array_map(static function (array $method) {

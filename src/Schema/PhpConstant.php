@@ -13,10 +13,10 @@ final class PhpConstant
     private $visibility;
     /** @var string */
     private $name;
-    /** @var mixed|null */
+    /** @var string|null */
     private $default;
 
-    public function __construct(string $name, Visibility $visibility, $default)
+    public function __construct(string $name, Visibility $visibility, ?string $default)
     {
         $this->name = $name;
         $this->visibility = $visibility;
