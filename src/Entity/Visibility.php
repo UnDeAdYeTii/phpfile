@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace YeTii\PhpFile\Entity;
 
+use YeTii\PhpFile\Exception\InvalidEntityException;
+
 final class Visibility
 {
     public const PRIVATE = 'private';
@@ -16,7 +18,7 @@ final class Visibility
     public function __construct(string $value)
     {
         if (! in_array($value, [self::PRIVATE, self::PROTECTED, self::PUBLIC], true)) {
-            throw new \RuntimeException('Invalid visibility specified');
+            throw InvalidEntityException::invalidVisibilitySpecified();
         }
 
         $this->value = $value;

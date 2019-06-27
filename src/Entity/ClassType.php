@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace YeTii\PhpFile\Entity;
 
+use YeTii\PhpFile\Exception\InvalidEntityException;
+
 final class ClassType
 {
     public const T_CLASS = 'class';
@@ -16,7 +18,7 @@ final class ClassType
     public function __construct(string $value)
     {
         if (! in_array($value, [self::T_CLASS, self::T_INTERFACE, self::T_TRAIT], true)) {
-            throw new \RuntimeException('Invalid class type specified');
+            throw InvalidEntityException::invalidClassTypeSpecified();
         }
 
         $this->value = $value;
