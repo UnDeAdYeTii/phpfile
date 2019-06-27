@@ -22,7 +22,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "YeTii\\PhpFile\\Tests": "tests"
+            "YeTii\\PhpFile\\Tests\\": "tests"
         }
     }
 }
