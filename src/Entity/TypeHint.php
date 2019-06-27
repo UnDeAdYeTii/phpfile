@@ -6,7 +6,7 @@ namespace YeTii\PhpFile\Entity;
 
 final class TypeHint
 {
-    /** @var string */
+    /** @var string|null */
     private $value;
 
     public function __construct(?string $value)

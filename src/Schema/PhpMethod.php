@@ -15,7 +15,7 @@ final class PhpMethod
     private $name;
     /** @var string|null */
     private $code;
-    /** @var array<PhpArgument>|null */
+    /** @var array|array<PhpArgument>|null */
     private $arguments;
 
     public function __construct(string $name, Visibility $visibility, ?string $code, ?array $arguments)

@@ -58,7 +58,7 @@ final class Schematic
             throw InvalidSchemaException::invalidConfigurationFileExtension();
         }
 
-        $configurationContents = file_get_contents($configurationPath);
+        $configurationContents = (string) file_get_contents($configurationPath);
 
         $data = $extension === 'neon' ?
             Neon::decode($configurationContents) :

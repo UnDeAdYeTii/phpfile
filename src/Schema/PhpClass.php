@@ -33,7 +33,7 @@ final class PhpClass
     /**
      * @param  string  $name
      * @param  string|null  $namespace
-     * @param  ClassType|null  $type
+     * @param  ClassType  $type
      * @param  array<string>  $uses
      * @param  string|null  $extends
      * @param  array<string>  $implements
@@ -45,7 +45,7 @@ final class PhpClass
     public function __construct(
         string $name,
         ?string $namespace,
-        ?ClassType $type,
+        ClassType $type,
         array $uses,
         ?string $extends,
         array $implements,
@@ -60,7 +60,7 @@ final class PhpClass
         $this->uses = $uses;
         $this->implements = $implements;
         $this->extends = $extends;
-        $this->traits = $traits;
+        $this->traits = $traits ?? [];
         $this->properties = $properties;
         $this->methods = $methods;
         $this->constants = $constants;
