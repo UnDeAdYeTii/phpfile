@@ -1,0 +1,56 @@
+# Define a new class
+class:
+
+  # The namespace of the class
+  namespace: YeTii\Test
+
+  # The type of class (class, interface, trait)
+  type: class
+
+  # The name of the class
+  name: TestClass
+
+  # What interfaces the class implements
+  implements:
+  - ImplementedClassOne
+  - ImplementedClassTwo
+
+  # What class the class extends
+  extends: ExtendClass
+
+  # Import methods and classes
+  uses:
+  - YeTii\Another\TraitOne
+  - YeTii\Another\One: TraitTwo
+
+  # What traits the class uses
+  traits:
+  - TraitOne
+  - TraitTwo
+
+  # What properties the class has
+  properties:
+  - visibility: protected
+    name: anArray
+    default: "[]"
+  - visibility: public
+    name: publicVal
+    default: "'default'"
+
+  # What methods the class has
+  methods:
+  - visibility: protected
+    name: functionName
+    arguments:
+    - typehint: int
+      ref: true
+      name: id
+    - typehint: string
+      name: str
+      default: "''"
+    - name: extra
+      default: 'null'
+  - visibility: public
+    name: someName
+    arguments:
+    - name: arg
