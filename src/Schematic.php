@@ -38,9 +38,9 @@ final class Schematic
         }
 
         $this->data = new PhpClass(
-            $schema['name'], $schema['namespace'], new ClassType($schema['type']),
-            $schema['uses'], $schema['extends'], $schema['implements'], $schema['traits'],
-            $base['properties'], $base['methods'], $base['constants']
+            $classData['name'], $classData['namespace'], new ClassType($classData['type']),
+            $classData['uses'], $classData['extends'], $classData['implements'], $classData['traits'],
+            $base['properties'] ?? [], $base['methods'] ?? [], $base['constants'] ?? []
         );
     }
 
@@ -98,9 +98,9 @@ final class Schematic
             $arguments = array_map(static function (array $argument) {
                 return new PhpArgument(
                     $argument['name'],
-                    new TypeHint($argument['typehint']),
-                    $argument['default'],
-                    (bool) $argument['reference']
+                    new TypeHint($argument['typehint'] ?? null),
+                    $argument['default'] ?? null,
+                    (bool) ($argument['reference'] ?? null)
                 );
             }, $method['arguments']);
 
