@@ -7,12 +7,12 @@ use function json_decode;
 use function file_get_contents;
 use YeTii\PhpFile\Entity\TypeHint;
 use YeTii\PhpFile\Schema\PhpClass;
-use YeTii\PhpFile\Schema\PhpMethod;
 use YeTii\PhpFile\Entity\ClassType;
+use YeTii\PhpFile\Schema\PhpMethod;
 use YeTii\PhpFile\Entity\Visibility;
+use YeTii\PhpFile\Schema\PhpArgument;
 use YeTii\PhpFile\Schema\PhpConstant;
 use YeTii\PhpFile\Schema\PhpProperty;
-use YeTii\PhpFile\Schema\PhpArgument;
 
 final class Schematic
 {
