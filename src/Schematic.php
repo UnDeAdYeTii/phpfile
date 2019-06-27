@@ -2,6 +2,7 @@
 
 namespace YeTii\PhpFile;
 
+use Nette\Neon\Neon;
 use RuntimeException;
 use function json_decode;
 use function file_get_contents;
@@ -47,6 +48,18 @@ final class Schematic
     {
         if (! file_exists($configurationPath)) {
             throw new RuntimeException('Configuration file not found');
+        }
+
+        $extension = substr($configurationPath, -1, 4);
+
+        if (! in_array($extension, ['json', 'neon'])) {
+            throw new RuntimeException('Invalid configuration file');
+        }
+
+        if ($extension === 'neon') {
+            $data = Neon::decode();
+
+            return new self($data);
         }
 
         $json = file_get_contents($configurationPath);
