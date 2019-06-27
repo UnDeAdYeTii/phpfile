@@ -4,6 +4,7 @@ namespace YeTii\PhpFile\Schema;
 
 use YeTii\PhpFile\Entity\TypeHint;
 
+/** @internal */
 final class PhpArgument
 {
     /** @var mixed */

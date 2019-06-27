@@ -4,6 +4,7 @@ namespace YeTii\PhpFile\Schema;
 
 use YeTii\PhpFile\Entity\Visibility;
 
+/** @internal */
 final class PhpProperty
 {
     /** @var Visibility */

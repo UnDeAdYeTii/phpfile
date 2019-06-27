@@ -4,6 +4,7 @@ namespace YeTii\PhpFile\Schema;
 
 use YeTii\PhpFile\Entity\ClassType;
 
+/** @internal */
 final class PhpClass
 {
     /** @var string|null */
