@@ -24,6 +24,8 @@ final class PhpClass
     private $properties;
     /** @var array<PhpMethod> */
     private $methods;
+    /** @var array<PhpConstant> */
+    private $constants;
 
     /**
      * @param  string  $name
@@ -35,6 +37,7 @@ final class PhpClass
      * @param  array|null  $traits
      * @param  array<PhpProperty>  $properties
      * @param  array<PhpMethod>  $methods
+     * @param  array<PhpConstant>  $constants
      */
     public function __construct(
         string $name,
@@ -45,7 +48,8 @@ final class PhpClass
         array $implements,
         ?array $traits,
         array $properties,
-        array $methods
+        array $methods,
+        array $constants
     ) {
         $this->namespace = $namespace;
         $this->type = $type;
@@ -56,5 +60,6 @@ final class PhpClass
         $this->traits = $traits;
         $this->properties = $properties;
         $this->methods = $methods;
+        $this->constants = $constants;
     }
 }
