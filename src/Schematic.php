@@ -19,7 +19,7 @@ use YeTii\PhpFile\Exception\InvalidSchemaException;
 
 final class Schematic
 {
-    /** @var array */
+    /** @var PhpClass */
     private $data;
 
     public function __construct(array $schema)

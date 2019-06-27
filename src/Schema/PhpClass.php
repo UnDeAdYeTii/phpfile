@@ -37,7 +37,7 @@ final class PhpClass
      * @param  array<string>  $uses
      * @param  string|null  $extends
      * @param  array<string>  $implements
-     * @param  array|null  $traits
+     * @param  array<string>|null  $traits
      * @param  array<PhpProperty>  $properties
      * @param  array<PhpMethod>  $methods
      * @param  array<PhpConstant>  $constants
