@@ -60,7 +60,7 @@ final class Schematic
 
         $data = $extension === 'neon' ?
             Neon::decode($configurationContents) :
-            json_decode($configurationContents, false);
+            json_decode($configurationContents, true);
 
         return new self($data);
     }
