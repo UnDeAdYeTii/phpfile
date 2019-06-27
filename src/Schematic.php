@@ -3,7 +3,6 @@
 namespace YeTii\PhpFile;
 
 use Nette\Neon\Neon;
-use RuntimeException;
 use function json_decode;
 use function file_get_contents;
 use YeTii\PhpFile\Entity\TypeHint;
@@ -14,6 +13,7 @@ use YeTii\PhpFile\Entity\Visibility;
 use YeTii\PhpFile\Schema\PhpArgument;
 use YeTii\PhpFile\Schema\PhpConstant;
 use YeTii\PhpFile\Schema\PhpProperty;
+use YeTii\PhpFile\Exception\InvalidSchemaException;
 
 final class Schematic
 {
@@ -47,13 +47,13 @@ final class Schematic
     public static function makeFromConfiguration(string $configurationPath): self
     {
         if (! file_exists($configurationPath)) {
-            throw new RuntimeException('Configuration file not found');
+            throw InvalidSchemaException::configurationFileDoesNotExist();
         }
 
-        $extension = substr($configurationPath, -1, 4);
+        $extension = substr($configurationPath, -4, 4);
 
         if (! in_array($extension, ['json', 'neon'])) {
-            throw new RuntimeException('Invalid configuration file');
+            throw InvalidSchemaException::invalidConfigurationFileExtension();
         }
 
         if ($extension === 'neon') {
