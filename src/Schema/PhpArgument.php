@@ -16,13 +16,33 @@ final class PhpArgument
     /** @var bool */
     private $reference;
     /** @var TypeDeclaration */
-    private $typehint;
+    private $typeDeclaration;
 
-    public function __construct(string $name, TypeDeclaration $typehint, ?string $default, bool $reference)
+    public function __construct(string $name, TypeDeclaration $typeDeclaration, ?string $default, bool $reference)
     {
         $this->name = $name;
-        $this->typehint = $typehint;
+        $this->typeDeclaration = $typeDeclaration;
         $this->default = $default;
         $this->reference = $reference;
+    }
+
+    public function getDefault(): ?string
+    {
+        return $this->default;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function isReference(): bool
+    {
+        return $this->reference;
+    }
+
+    public function getTypeDeclaration(): ?string
+    {
+        return $this->typeDeclaration->getValue();
     }
 }
