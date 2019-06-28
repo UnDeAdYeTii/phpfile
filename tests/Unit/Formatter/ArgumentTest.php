@@ -1,6 +1,6 @@
 <?php
 
-namespace YeTii\PhpFile\Tests\Formatter;
+namespace YeTii\PhpFile\Tests\Unit\Formatter;
 
 use PHPUnit\Framework\TestCase;
 use YeTii\PhpFile\Schema\PhpArgument;
