@@ -7,7 +7,6 @@ namespace YeTii\PhpFile;
 use Nette\Neon\Neon;
 use function json_decode;
 use function file_get_contents;
-use YeTii\PhpFile\Entity\TypeDeclaration;
 use YeTii\PhpFile\Schema\PhpClass;
 use YeTii\PhpFile\Entity\ClassType;
 use YeTii\PhpFile\Schema\PhpMethod;
@@ -15,6 +14,7 @@ use YeTii\PhpFile\Entity\Visibility;
 use YeTii\PhpFile\Schema\PhpArgument;
 use YeTii\PhpFile\Schema\PhpConstant;
 use YeTii\PhpFile\Schema\PhpProperty;
+use YeTii\PhpFile\Entity\TypeDeclaration;
 use YeTii\PhpFile\Exception\InvalidSchemaException;
 
 final class Schematic

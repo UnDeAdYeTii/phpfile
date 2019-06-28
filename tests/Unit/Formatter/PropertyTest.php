@@ -4,7 +4,6 @@ namespace YeTii\PhpFile\Tests\Formatter;
 
 use PHPUnit\Framework\TestCase;
 use YeTii\PhpFile\Entity\Visibility;
-use YeTii\PhpFile\Schema\PhpConstant;
 use YeTii\PhpFile\Schema\PhpProperty;
 use YeTii\PhpFile\Formatter\PropertyFormatter;
 
