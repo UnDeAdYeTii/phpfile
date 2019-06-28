@@ -33,8 +33,8 @@ final class PhpConstant
         return $this->name;
     }
 
-    public function getDefault(): ?string
+    public function getDefault(): string
     {
-        return $this->default;
+        return $this->default ?? "''";
     }
 }

@@ -71,7 +71,7 @@ final class PhpClass
         return $this->namespace;
     }
 
-    public function getType(): ClassType
+    public function getType(): string
     {
         return $this->type->getValue();
     }
@@ -93,15 +93,15 @@ final class PhpClass
         return $this->implements;
     }
 
-    public function getExtends(): ?string
+    public function getExtends(): string
     {
-        return $this->extends;
+        return $this->extends ?? '';
     }
 
     /** @return array<string> */
     public function getTraits(): array
     {
-        return $this->traits;
+        return $this->traits ?? [];
     }
 
     /** @return array<PhpProperty> */

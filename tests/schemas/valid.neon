@@ -28,6 +28,12 @@ class:
   - TraitOne
   - TraitTwo
 
+  # What constants the class has
+  constants:
+  - visibility: protected
+    name: TIME_IS_A_CONSTANT
+    default: '[]'
+
   # What properties the class has
   properties:
   - visibility: protected
