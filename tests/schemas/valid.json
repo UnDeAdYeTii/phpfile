@@ -18,6 +18,13 @@
             "TraitOne",
             "TraitTwo"
         ],
+        "constants": [
+            {
+                "visibility": "protected",
+                "name": "TIME_IS_A_CONSTANT",
+                "default": "[]"
+            }
+        ],
         "properties": [
             {
                 "visibility": "protected",
