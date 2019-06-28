@@ -17,7 +17,7 @@ final class ConstantTest extends TestCase
 
         $constantFormatter = new ConstantFormatter($constant);
 
-        $this->assertEquals('public const TEST_CONSTANT = \'\'', $constantFormatter->format());
+        $this->assertEquals('public const TEST_CONSTANT = \'\';', $constantFormatter->format());
     }
 
     /** @test */
@@ -28,7 +28,7 @@ final class ConstantTest extends TestCase
 
         $constantFormatter = new ConstantFormatter($constant);
 
-        $this->assertEquals('public const TEST_CONSTANT = \'\'', $constantFormatter->format());
+        $this->assertEquals('public const TEST_CONSTANT = \'\';', $constantFormatter->format());
     }
 
     /** @test */
@@ -39,7 +39,7 @@ final class ConstantTest extends TestCase
 
         $constantFormatter = new ConstantFormatter($constant);
 
-        $this->assertEquals('public const TEST_CONSTANT = []', $constantFormatter->format());
+        $this->assertEquals('public const TEST_CONSTANT = [];', $constantFormatter->format());
     }
 
     /** @test */
@@ -50,7 +50,7 @@ final class ConstantTest extends TestCase
 
         $constantFormatter = new ConstantFormatter($constant);
 
-        $this->assertEquals('protected const TEST_CONSTANT = []', $constantFormatter->format());
+        $this->assertEquals('protected const TEST_CONSTANT = [];', $constantFormatter->format());
     }
 
     /** @test */
@@ -61,6 +61,6 @@ final class ConstantTest extends TestCase
 
         $constantFormatter = new ConstantFormatter($constant);
 
-        $this->assertEquals('private const TEST_CONSTANT = []', $constantFormatter->format());
+        $this->assertEquals('private const TEST_CONSTANT = [];', $constantFormatter->format());
     }
 }

@@ -18,6 +18,6 @@ final class ConstantFormatter implements FormatterInterface
 
     public function format(): string
     {
-        return "{$this->constant->getVisibility()} const {$this->constant->getName()} = {$this->constant->getDefault()}";
+        return "{$this->constant->getVisibility()} const {$this->constant->getName()} = {$this->constant->getDefault()};";
     }
 }
