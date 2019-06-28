@@ -22,6 +22,6 @@ final class ArgumentFormatter implements FormatterInterface
         $reference = $this->argument->isReference() ? '&' : '';
         $typeDeclaration = $this->argument->getTypeDeclaration() ? $this->argument->getTypeDeclaration().' ' : '';
 
-        return "{$typeDeclaration}{$reference}{$this->argument->getName()}{$defaultValue}";
+        return "{$typeDeclaration}{$reference}\${$this->argument->getName()}{$defaultValue}";
     }
 }

@@ -17,7 +17,7 @@ final class ArgumentTest extends TestCase
 
         $argumentFormatter = new ArgumentFormatter($argument);
 
-        $this->assertEquals('string argument', $argumentFormatter->format());
+        $this->assertEquals('string $argument', $argumentFormatter->format());
     }
 
     /** @test */
@@ -28,7 +28,7 @@ final class ArgumentTest extends TestCase
 
         $argumentFormatter = new ArgumentFormatter($argument);
 
-        $this->assertEquals('string argument = \'\'', $argumentFormatter->format());
+        $this->assertEquals('string $argument = \'\'', $argumentFormatter->format());
     }
 
     /** @test */
@@ -39,7 +39,7 @@ final class ArgumentTest extends TestCase
 
         $argumentFormatter = new ArgumentFormatter($argument);
 
-        $this->assertEquals('array argument = []', $argumentFormatter->format());
+        $this->assertEquals('array $argument = []', $argumentFormatter->format());
     }
 
     /** @test */
@@ -50,7 +50,7 @@ final class ArgumentTest extends TestCase
 
         $argumentFormatter = new ArgumentFormatter($argument);
 
-        $this->assertEquals('argument = null', $argumentFormatter->format());
+        $this->assertEquals('$argument = null', $argumentFormatter->format());
     }
 
     /** @test */
@@ -61,6 +61,6 @@ final class ArgumentTest extends TestCase
 
         $argumentFormatter = new ArgumentFormatter($argument);
 
-        $this->assertEquals('string &argument = \'\'', $argumentFormatter->format());
+        $this->assertEquals('string &$argument = \'\'', $argumentFormatter->format());
     }
 }
