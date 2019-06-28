@@ -6,8 +6,8 @@ namespace YeTii\PhpFile\Formatter;
 
 use YeTii\PhpFile\Schema\PhpClass;
 use YeTii\PhpFile\Schema\PhpMethod;
-use YeTii\PhpFile\Schema\PhpProperty;
 use YeTii\PhpFile\Schema\PhpConstant;
+use YeTii\PhpFile\Schema\PhpProperty;
 
 final class ClassFormatter implements FormatterInterface
 {
