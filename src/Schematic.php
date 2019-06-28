@@ -7,7 +7,7 @@ namespace YeTii\PhpFile;
 use Nette\Neon\Neon;
 use function json_decode;
 use function file_get_contents;
-use YeTii\PhpFile\Entity\TypeHint;
+use YeTii\PhpFile\Entity\TypeDeclaration;
 use YeTii\PhpFile\Schema\PhpClass;
 use YeTii\PhpFile\Entity\ClassType;
 use YeTii\PhpFile\Schema\PhpMethod;
@@ -116,7 +116,7 @@ final class Schematic
             $arguments = array_map(static function (array $argument) {
                 return new PhpArgument(
                     $argument['name'],
-                    new TypeHint($argument['typehint'] ?? null),
+                    new TypeDeclaration($argument['typehint'] ?? null),
                     $argument['default'] ?? null,
                     (bool) ($argument['reference'] ?? null)
                 );

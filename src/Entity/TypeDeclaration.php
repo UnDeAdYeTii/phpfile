@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace YeTii\PhpFile\Entity;
 
-final class TypeHint
+final class TypeDeclaration
 {
     /** @var string|null */
     private $value;

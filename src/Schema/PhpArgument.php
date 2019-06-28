@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace YeTii\PhpFile\Schema;
 
-use YeTii\PhpFile\Entity\TypeHint;
+use YeTii\PhpFile\Entity\TypeDeclaration;
 
 /** @internal */
 final class PhpArgument
@@ -15,10 +15,10 @@ final class PhpArgument
     private $name;
     /** @var bool */
     private $reference;
-    /** @var TypeHint */
+    /** @var TypeDeclaration */
     private $typehint;
 
-    public function __construct(string $name, TypeHint $typehint, ?string $default, bool $reference)
+    public function __construct(string $name, TypeDeclaration $typehint, ?string $default, bool $reference)
     {
         $this->name = $name;
         $this->typehint = $typehint;
