@@ -65,4 +65,64 @@ final class PhpClass
         $this->methods = $methods;
         $this->constants = $constants;
     }
+
+    /** @return string|null */
+    public function getNamespace(): ?string
+    {
+        return $this->namespace;
+    }
+
+    /** @return ClassType */
+    public function getType(): ClassType
+    {
+        return $this->type->getValue();
+    }
+
+    /** @return string */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /** @return array<string|array<string,string>> */
+    public function getUses(): array
+    {
+        return $this->uses;
+    }
+
+    /** @return array<string> */
+    public function getImplements(): array
+    {
+        return $this->implements;
+    }
+
+    /** @return string|null */
+    public function getExtends(): ?string
+    {
+        return $this->extends;
+    }
+
+    /** @return array<string> */
+    public function getTraits(): array
+    {
+        return $this->traits;
+    }
+
+    /** @return array<PhpProperty> */
+    public function getProperties(): array
+    {
+        return $this->properties;
+    }
+
+    /** @return array<PhpMethod> */
+    public function getMethods(): array
+    {
+        return $this->methods;
+    }
+
+    /** @return array<PhpConstant> */
+    public function getConstants(): array
+    {
+        return $this->constants;
+    }
 }
