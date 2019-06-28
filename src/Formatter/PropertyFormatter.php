@@ -18,8 +18,9 @@ final class PropertyFormatter implements FormatterInterface
 
     public function format(): string
     {
-        $defaultValue = $this->argument->getDefault() ? ' = '.$this->argument->getDefault() : '';
+        $defaultValue = $this->property->getDefault() ? ' = '.$this->property->getDefault() : '';
+        $visibility = $this->property->getVisibility() ? $this->property->getVisibility().' ' : '';
 
-        return "{$this->property->getVisibility()} \${$this->property->getName()} {$defaultValue}";
+        return "{$visibility}\${$this->property->getName()}{$defaultValue}";
     }
 }
