@@ -19,7 +19,7 @@ final class MethodTest extends TestCase
 
         $propertyFormatter = new MethodFormatter($constant);
 
-        $this->assertEquals(<<<PHP
+        $this->assertEquals(<<<'PHP'
     public function method() {
         
     }
@@ -36,8 +36,8 @@ PHP
 
         $propertyFormatter = new MethodFormatter($constant);
 
-        $this->assertEquals(<<<PHP
-    public function method(\$argument) {
+        $this->assertEquals(<<<'PHP'
+    public function method($argument) {
         
     }
 PHP
