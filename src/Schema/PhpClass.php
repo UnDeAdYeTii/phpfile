@@ -71,7 +71,7 @@ final class PhpClass
         return $this->namespace;
     }
 
-    public function getType(): ClassType
+    public function getType(): string
     {
         return $this->type->getValue();
     }
