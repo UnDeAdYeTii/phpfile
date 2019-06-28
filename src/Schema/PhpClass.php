@@ -66,19 +66,16 @@ final class PhpClass
         $this->constants = $constants;
     }
 
-    /** @return string|null */
     public function getNamespace(): ?string
     {
         return $this->namespace;
     }
 
-    /** @return ClassType */
     public function getType(): ClassType
     {
         return $this->type->getValue();
     }
 
-    /** @return string */
     public function getName(): string
     {
         return $this->name;
@@ -96,7 +93,6 @@ final class PhpClass
         return $this->implements;
     }
 
-    /** @return string|null */
     public function getExtends(): ?string
     {
         return $this->extends;
