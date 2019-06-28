@@ -31,4 +31,25 @@ final class PhpMethod
         $this->code = $code;
         $this->arguments = $arguments;
     }
+
+    public function getVisibility(): string
+    {
+        return $this->visibility->getValue();
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    /** @return array<PhpArgument> */
+    public function getArguments(): array
+    {
+        return $this->arguments ?? [];
+    }
 }
