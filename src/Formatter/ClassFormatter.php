@@ -51,6 +51,11 @@ final class ClassFormatter implements FormatterInterface
 PHP;
     }
 
+    /**
+     * @param  array<string>  $implements
+     *
+     * @return string
+     */
     private function buildImplements(array $implements): string
     {
         if (count($implements) === 0) {
@@ -62,6 +67,11 @@ PHP;
         return " implements {$list}";
     }
 
+    /**
+     * @param  array<string>  $traits
+     *
+     * @return string
+     */
     private function buildTraits(array $traits): string
     {
         $list = array_map(static function (string $trait) {
