@@ -22,4 +22,19 @@ final class PhpConstant
         $this->visibility = $visibility;
         $this->default = $default;
     }
+
+    public function getVisibility(): string
+    {
+        return $this->visibility->getValue();
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function getDefault(): ?string
+    {
+        return $this->default;
+    }
 }
