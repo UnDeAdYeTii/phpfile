@@ -5,8 +5,10 @@ namespace YeTii\PhpFile\Tests\Unit\Formatter;
 use PHPUnit\Framework\TestCase;
 use YeTii\PhpFile\Schema\PhpClass;
 use YeTii\PhpFile\Entity\ClassType;
+use YeTii\PhpFile\Schema\PhpMethod;
 use YeTii\PhpFile\Entity\Visibility;
 use YeTii\PhpFile\Schema\PhpConstant;
+use YeTii\PhpFile\Schema\PhpProperty;
 use YeTii\PhpFile\Formatter\ClassFormatter;
 
 final class ClassTest extends TestCase
@@ -171,6 +173,72 @@ use Time;
     
 
     
+}
+PHP
+            , $classFormatter->format());
+    }
+
+    /** @test */
+    public function itCanFormatAValidClassWithProperties(): void
+    {
+        $properties = [new PhpProperty('testProperty', new Visibility('private'), null)];
+        $classType = new ClassType(ClassType::T_CLASS);
+        $class = new PhpClass(
+            'NewClass', 'Tests\Ns', $classType, [], null, [], [], $properties, [], []
+        );
+
+        $classFormatter = new ClassFormatter($class);
+
+        $this->assertEquals(<<<'PHP'
+<?php
+
+namespace Tests\Ns;
+    
+
+
+class NewClass
+{
+    
+
+    
+
+    private $testProperty;
+
+    
+}
+PHP
+            , $classFormatter->format());
+    }
+
+    /** @test */
+    public function itCanFormatAValidClassWithMethods(): void
+    {
+        $methods = [new PhpMethod('testMethod', new Visibility('public'), null, [])];
+        $classType = new ClassType(ClassType::T_CLASS);
+        $class = new PhpClass(
+            'NewClass', 'Tests\Ns', $classType, [], null, [], null, [], $methods, []
+        );
+
+        $classFormatter = new ClassFormatter($class);
+
+        $this->assertEquals(<<<'PHP'
+<?php
+
+namespace Tests\Ns;
+    
+
+
+class NewClass
+{
+    
+
+    
+
+    
+
+        public function testMethod() {
+        
+    }
 }
 PHP
             , $classFormatter->format());
