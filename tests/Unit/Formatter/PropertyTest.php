@@ -17,7 +17,7 @@ final class PropertyTest extends TestCase
 
         $propertyFormatter = new PropertyFormatter($constant);
 
-        $this->assertEquals('public $property', $propertyFormatter->format());
+        $this->assertEquals('public $property;', $propertyFormatter->format());
     }
 
     /** @test */
@@ -28,7 +28,7 @@ final class PropertyTest extends TestCase
 
         $propertyFormatter = new PropertyFormatter($constant);
 
-        $this->assertEquals('public $property = \'\'', $propertyFormatter->format());
+        $this->assertEquals('public $property = \'\';', $propertyFormatter->format());
     }
 
     /** @test */
@@ -39,7 +39,7 @@ final class PropertyTest extends TestCase
 
         $propertyFormatter = new PropertyFormatter($constant);
 
-        $this->assertEquals('public $property = []', $propertyFormatter->format());
+        $this->assertEquals('public $property = [];', $propertyFormatter->format());
     }
 
     /** @test */
@@ -50,7 +50,7 @@ final class PropertyTest extends TestCase
 
         $propertyFormatter = new PropertyFormatter($constant);
 
-        $this->assertEquals('protected $property', $propertyFormatter->format());
+        $this->assertEquals('protected $property;', $propertyFormatter->format());
     }
 
     /** @test */
@@ -61,6 +61,6 @@ final class PropertyTest extends TestCase
 
         $propertyFormatter = new PropertyFormatter($constant);
 
-        $this->assertEquals('private $property', $propertyFormatter->format());
+        $this->assertEquals('private $property;', $propertyFormatter->format());
     }
 }
