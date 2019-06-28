@@ -20,7 +20,8 @@ final class ArgumentFormatter implements FormatterInterface
     {
         $defaultValue = $this->argument->getDefault() ? ' = '.$this->argument->getDefault() : '';
         $reference = $this->argument->isReference() ? '&' : '';
+        $typeDeclaration = $this->argument->getTypeDeclaration() ? $this->argument->getTypeDeclaration().' ' : '';
 
-        return "{$this->argument->getTypehint()} {$reference}{$this->argument->getName()} {$defaultValue}";
+        return "{$typeDeclaration}{$reference}{$this->argument->getName()}{$defaultValue}";
     }
 }
