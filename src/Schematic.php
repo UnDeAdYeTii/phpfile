@@ -25,10 +25,9 @@ final class Schematic
     /** @param  array<mixed>  $schema */
     public function __construct(array $schema)
     {
-        $classData = $schema['class'];
         $base = [];
 
-        foreach ($classData as $key => $value) {
+        foreach ($schema as $key => $value) {
             if ($key === 'methods') {
                 $value = $this->mapMethods($value);
             } elseif ($key === 'properties') {
@@ -41,8 +40,8 @@ final class Schematic
         }
 
         $this->data = new PhpClass(
-            $classData['name'], $classData['namespace'], new ClassType($classData['type']),
-            $classData['uses'], $classData['extends'], $classData['implements'], $classData['traits'],
+            $schema['name'], $schema['namespace'], new ClassType($schema['type']),
+            $schema['uses'], $schema['extends'], $schema['implements'], $schema['traits'],
             $base['properties'] ?? [], $base['methods'] ?? [], $base['constants'] ?? []
         );
     }
