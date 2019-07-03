@@ -27,6 +27,9 @@
             "YeTii\\PhpFile\\Tests\\": "tests"
         }
     },
+    "scripts": {
+        "test": "phpunit"
+    },
     "config": {
         "sort-packages": true
     }
