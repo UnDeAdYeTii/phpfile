@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace YeTii\PhpFile\Entity;
+namespace YeTii\PhpFile\Entities;
 
-use YeTii\PhpFile\Exception\InvalidEntityException;
+use YeTii\PhpFile\Exceptions\InvalidEntityException;
 
 final class ClassType
 {

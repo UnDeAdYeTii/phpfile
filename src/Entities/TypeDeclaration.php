@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace YeTii\PhpFile\Entity;
+namespace YeTii\PhpFile\Entities;
 
 final class TypeDeclaration
 {

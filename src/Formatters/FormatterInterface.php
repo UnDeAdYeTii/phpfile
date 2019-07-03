@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace YeTii\PhpFile\Formatter;
+namespace YeTii\PhpFile\Formatters;
 
 interface FormatterInterface
 {

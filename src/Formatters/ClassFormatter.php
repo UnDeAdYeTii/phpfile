@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace YeTii\PhpFile\Formatter;
+namespace YeTii\PhpFile\Formatters;
 
-use YeTii\PhpFile\Schema\PhpClass;
-use YeTii\PhpFile\Schema\PhpMethod;
-use YeTii\PhpFile\Schema\PhpConstant;
-use YeTii\PhpFile\Schema\PhpProperty;
+use YeTii\PhpFile\Schemas\PhpClass;
+use YeTii\PhpFile\Schemas\PhpMethod;
+use YeTii\PhpFile\Schemas\PhpConstant;
+use YeTii\PhpFile\Schemas\PhpProperty;
 
 final class ClassFormatter implements FormatterInterface
 {

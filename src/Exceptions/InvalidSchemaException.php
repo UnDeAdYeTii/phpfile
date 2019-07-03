@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace YeTii\PhpFile\Exception;
+namespace YeTii\PhpFile\Exceptions;
 
 use RuntimeException;
 

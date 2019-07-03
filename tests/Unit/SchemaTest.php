@@ -6,8 +6,8 @@ namespace YeTii\PhpFile\Tests\Unit;
 
 use YeTii\PhpFile\Schematic;
 use PHPUnit\Framework\TestCase;
-use YeTii\PhpFile\Schema\PhpClass;
-use YeTii\PhpFile\Exception\InvalidSchemaException;
+use YeTii\PhpFile\Schemas\PhpClass;
+use YeTii\PhpFile\Exceptions\InvalidSchemaException;
 
 final class SchemaTest extends TestCase
 {
@@ -17,7 +17,7 @@ final class SchemaTest extends TestCase
         $this->expectException(InvalidSchemaException::class);
         $this->expectExceptionMessage('Configuration schema file not found');
 
-        Schematic::makeFromConfiguration(__DIR__.'/../schemas/non-existant-file.neon');
+        Schematic::makeFromConfiguration(__DIR__.'/../Schemas/non-existant-file.neon');
     }
 
     /** @test */
@@ -26,13 +26,13 @@ final class SchemaTest extends TestCase
         $this->expectException(InvalidSchemaException::class);
         $this->expectExceptionMessage('Invalid configuration schema file extension');
 
-        Schematic::makeFromConfiguration(__DIR__.'/../schemas/invalid.txt');
+        Schematic::makeFromConfiguration(__DIR__.'/../Schemas/invalid.txt');
     }
 
     /** @test */
     public function itCreatesAPhpClassInstanceFromANeonSchemaFile(): void
     {
-        $schema = Schematic::makeFromConfiguration(__DIR__.'/../schemas/valid.neon');
+        $schema = Schematic::makeFromConfiguration(__DIR__.'/../Schemas/valid.neon');
 
         $this->assertInstanceOf(PhpClass::class, $schema->getData());
     }
@@ -40,7 +40,7 @@ final class SchemaTest extends TestCase
     /** @test */
     public function itCreatesAPhpClassInstanceFromAJsonSchemaFile(): void
     {
-        $schema = Schematic::makeFromConfiguration(__DIR__.'/../schemas/valid.json');
+        $schema = Schematic::makeFromConfiguration(__DIR__.'/../Schemas/valid.json');
 
         $this->assertInstanceOf(PhpClass::class, $schema->getData());
     }

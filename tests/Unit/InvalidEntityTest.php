@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace YeTii\PhpFile\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use YeTii\PhpFile\Entity\ClassType;
-use YeTii\PhpFile\Entity\Visibility;
-use YeTii\PhpFile\Exception\InvalidEntityException;
+use YeTii\PhpFile\Entities\ClassType;
+use YeTii\PhpFile\Entities\Visibility;
+use YeTii\PhpFile\Exceptions\InvalidEntityException;
 
 final class InvalidEntityTest extends TestCase
 {

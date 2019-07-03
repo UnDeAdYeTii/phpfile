@@ -3,9 +3,9 @@
 namespace YeTii\PhpFile\Tests\Unit\Formatter;
 
 use PHPUnit\Framework\TestCase;
-use YeTii\PhpFile\Entity\Visibility;
-use YeTii\PhpFile\Schema\PhpProperty;
-use YeTii\PhpFile\Formatter\PropertyFormatter;
+use YeTii\PhpFile\Entities\Visibility;
+use YeTii\PhpFile\Schemas\PhpProperty;
+use YeTii\PhpFile\Formatters\PropertyFormatter;
 
 final class PropertyTest extends TestCase
 {

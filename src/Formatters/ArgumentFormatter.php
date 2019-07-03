@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace YeTii\PhpFile\Formatter;
+namespace YeTii\PhpFile\Formatters;
 
-use YeTii\PhpFile\Schema\PhpArgument;
+use YeTii\PhpFile\Schemas\PhpArgument;
 
 final class ArgumentFormatter implements FormatterInterface
 {

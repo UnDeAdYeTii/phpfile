@@ -3,9 +3,9 @@
 namespace YeTii\PhpFile\Tests\Unit\Formatter;
 
 use PHPUnit\Framework\TestCase;
-use YeTii\PhpFile\Schema\PhpArgument;
-use YeTii\PhpFile\Entity\TypeDeclaration;
-use YeTii\PhpFile\Formatter\ArgumentFormatter;
+use YeTii\PhpFile\Schemas\PhpArgument;
+use YeTii\PhpFile\Entities\TypeDeclaration;
+use YeTii\PhpFile\Formatters\ArgumentFormatter;
 
 final class ArgumentTest extends TestCase
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace YeTii\PhpFile\Schema;
+namespace YeTii\PhpFile\Schemas;
 
-use YeTii\PhpFile\Entity\Visibility;
+use YeTii\PhpFile\Entities\Visibility;
 
 /** @internal */
 final class PhpConstant

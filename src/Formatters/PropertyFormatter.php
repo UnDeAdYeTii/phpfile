@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace YeTii\PhpFile\Formatter;
+namespace YeTii\PhpFile\Formatters;
 
-use YeTii\PhpFile\Schema\PhpProperty;
+use YeTii\PhpFile\Schemas\PhpProperty;
 
 final class PropertyFormatter implements FormatterInterface
 {

@@ -3,13 +3,13 @@
 namespace YeTii\PhpFile\Tests\Unit\Formatter;
 
 use PHPUnit\Framework\TestCase;
-use YeTii\PhpFile\Schema\PhpClass;
-use YeTii\PhpFile\Entity\ClassType;
-use YeTii\PhpFile\Schema\PhpMethod;
-use YeTii\PhpFile\Entity\Visibility;
-use YeTii\PhpFile\Schema\PhpConstant;
-use YeTii\PhpFile\Schema\PhpProperty;
-use YeTii\PhpFile\Formatter\ClassFormatter;
+use YeTii\PhpFile\Schemas\PhpClass;
+use YeTii\PhpFile\Entities\ClassType;
+use YeTii\PhpFile\Schemas\PhpMethod;
+use YeTii\PhpFile\Entities\Visibility;
+use YeTii\PhpFile\Schemas\PhpConstant;
+use YeTii\PhpFile\Schemas\PhpProperty;
+use YeTii\PhpFile\Formatters\ClassFormatter;
 
 final class ClassTest extends TestCase
 {

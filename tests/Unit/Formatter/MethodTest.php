@@ -3,11 +3,11 @@
 namespace YeTii\PhpFile\Tests\Unit\Formatter;
 
 use PHPUnit\Framework\TestCase;
-use YeTii\PhpFile\Schema\PhpMethod;
-use YeTii\PhpFile\Entity\Visibility;
-use YeTii\PhpFile\Schema\PhpArgument;
-use YeTii\PhpFile\Entity\TypeDeclaration;
-use YeTii\PhpFile\Formatter\MethodFormatter;
+use YeTii\PhpFile\Schemas\PhpMethod;
+use YeTii\PhpFile\Entities\Visibility;
+use YeTii\PhpFile\Schemas\PhpArgument;
+use YeTii\PhpFile\Entities\TypeDeclaration;
+use YeTii\PhpFile\Formatters\MethodFormatter;
 
 final class MethodTest extends TestCase
 {

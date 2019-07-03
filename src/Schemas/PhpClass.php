@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace YeTii\PhpFile\Schema;
+namespace YeTii\PhpFile\Schemas;
 
-use YeTii\PhpFile\Entity\ClassType;
+use YeTii\PhpFile\Entities\ClassType;
 
 /** @internal */
 final class PhpClass

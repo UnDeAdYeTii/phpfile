@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace YeTii\PhpFile\Formatter;
+namespace YeTii\PhpFile\Formatters;
 
-use YeTii\PhpFile\Schema\PhpConstant;
+use YeTii\PhpFile\Schemas\PhpConstant;
 
 final class ConstantFormatter implements FormatterInterface
 {
