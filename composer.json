@@ -26,5 +26,8 @@
         "psr-4": {
             "YeTii\\PhpFile\\Tests\\": "tests"
         }
+    },
+    "config": {
+        "sort-packages": true
     }
 }
