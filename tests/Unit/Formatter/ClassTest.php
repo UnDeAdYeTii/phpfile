@@ -4,8 +4,8 @@ namespace YeTii\PhpFile\Tests\Unit\Formatter;
 
 use PHPUnit\Framework\TestCase;
 use YeTii\PhpFile\Schemas\PhpClass;
-use YeTii\PhpFile\Entities\ClassType;
 use YeTii\PhpFile\Schemas\PhpMethod;
+use YeTii\PhpFile\Entities\ClassType;
 use YeTii\PhpFile\Entities\Visibility;
 use YeTii\PhpFile\Schemas\PhpConstant;
 use YeTii\PhpFile\Schemas\PhpProperty;
