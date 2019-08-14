@@ -34,4 +34,10 @@ $schematic = Schematic::makeFromConfiguration('schematic.neon');
 // Or create from a PHP array of schematic rules
 $data = [ /* schematic rules */ ];
 $schematic = new Schematic($data);
+
+// Retrieve the PhpClass instance from a schematic
+$schematic->getData();
+
+// Retrieve the PhpClass instance as a string
+(new ClassFormatter($schematic->getData()))->format();
 ```
