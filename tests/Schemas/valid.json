@@ -1,0 +1,70 @@
+{
+    "namespace": "YeTii\\Test",
+    "type": "class",
+    "name": "TestClass",
+    "implements": [
+        "ImplementedClassOne",
+        "ImplementedClassTwo"
+    ],
+    "extends": "ExtendClass",
+    "uses": [
+        "YeTii\\Another\\TraitOne",
+        {
+            "YeTii\\Another\\One": "TraitTwo"
+        }
+    ],
+    "traits": [
+        "TraitOne",
+        "TraitTwo"
+    ],
+    "constants": [
+        {
+            "visibility": "protected",
+            "name": "TIME_IS_A_CONSTANT",
+            "default": "[]"
+        }
+    ],
+    "properties": [
+        {
+            "visibility": "protected",
+            "name": "anArray",
+            "default": "[]"
+        },
+        {
+            "visibility": "public",
+            "name": "publicVal",
+            "default": "'default'"
+        }
+    ],
+    "methods": [
+        {
+            "visibility": "protected",
+            "name": "functionName",
+            "arguments": [
+                {
+                    "typehint": "int",
+                    "ref": true,
+                    "name": "id"
+                },
+                {
+                    "typehint": "string",
+                    "name": "str",
+                    "default": "''"
+                },
+                {
+                    "name": "extra",
+                    "default": "null"
+                }
+            ]
+        },
+        {
+            "visibility": "public",
+            "name": "someName",
+            "arguments": [
+                {
+                    "name": "arg"
+                }
+            ]
+        }
+    ]
+}

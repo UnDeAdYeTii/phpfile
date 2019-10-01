@@ -1,6 +1,6 @@
 # phpfile
 
-This is a basic PHP File Generator library where you supply a schematic (json file or array) and it can produce a PHP files.
+This is a basic PHP File Generator library where you supply a schematic (json file or array) and it can produce PHP files.
 
 ## Customise
 
@@ -24,16 +24,20 @@ This is a basic PHP File Generator library where you supply a schematic (json fi
        * References
 
 ## Usage
+
 ```php
-$schema = new \YeTii\PhpFile\Schematic();
+use YeTii\PhpFile\Schematic;
 
-$schema->read('schematic.json')->out('output.php');
-// or
+// Create from either a JSON or Neon configuration file
+$schematic = Schematic::makeFromConfiguration('schematic.neon');
+
+// Or create from a PHP array of schematic rules
 $data = [ /* schematic rules */ ];
-$schema->read($data)->out('output.php');
+$schematic = new Schematic($data);
+
+// Retrieve the PhpClass instance from a schematic
+$schematic->getData();
+
+// Retrieve the PhpClass instance as a string
+(new ClassFormatter($schematic->getData()))->format();
 ```
-
-## Features
-
- * Indenting + Indenting Control
- * More (fucking look yourself)
