@@ -1,6 +1,6 @@
-# phpfile
+# phpfile (DISCONTINUED - NO LONGER MAINTAINED)
 
-This is a basic PHP File Generator library where you supply a schematic (json file or array) and it can produce a PHP files.
+This is a basic PHP File Generator library where you supply a schematic (json file or array) and it can produce a PHP files. 
 
 ## Customise
 
